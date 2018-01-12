@@ -4,7 +4,7 @@
 # twitterライブラリの呼び出し
 require 'twitter'
 
-# shimisu_kのAPIキーやアクセストークンを設定
+# APIキーやアクセストークンを設定
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ""
   config.consumer_secret     = ""
