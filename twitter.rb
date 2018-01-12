@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 # twitterライブラリの呼び出し
-require 'twitter'
+ require 'twitter'
+ require 'pp'
 
 # shimisu_kのAPIキーやアクセストークンを設定
 client = Twitter::REST::Client.new do |config|
@@ -12,10 +13,15 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = ""
 end
 
-# タイムラインの表示
+# display timeline
 client.home_timeline.each do |tweet|
   puts tweet.user.screen_name.+ ":"+ tweet.text
 end
 
-# ツイートする
-client.update(ARGV[0])
+# display mentions
+client.mentions_timeline.each do |tweet|
+  puts tweet.user.screen_name.+":"+tweet.text
+end
+
+# tweet
+ client.update(ARGV[0])
