@@ -15,7 +15,7 @@ end
 
 # display timeline
 client.home_timeline.each do |tweet|
-  puts tweet.user.screen_name.+ ":"+ tweet.text
+  puts tweet.user.name + "[ID:" + tweet.user.screen_name + "]:" + tweet.text
 end
 
 # display mentions
@@ -24,4 +24,4 @@ client.mentions_timeline.each do |tweet|
 end
 
 # tweet
- client.update(ARGV[0])
+ # client.update(ARGV[0])
