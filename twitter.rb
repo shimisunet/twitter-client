@@ -3,7 +3,6 @@
 
 # twitterライブラリの呼び出し
  require 'twitter'
- require 'pp'
 
 # APIキーやアクセストークンを設定
 client = Twitter::REST::Client.new do |config|
