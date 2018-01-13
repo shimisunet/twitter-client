@@ -14,20 +14,20 @@ end
 
 # display timeline
 client.home_timeline.each do |tweet|
-  puts tweet.user.name + "[ID:" + tweet.user.screen_name + "]"
-  puts tweet.text
+  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+  puts "\e[0m" + tweet.text
 end
 
 # display mentions
 client.mentions_timeline.each do |tweet|
-  puts tweet.user.name + "[ID:" + tweet.user.screen_name + "]"
-  puts tweet.text
+  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+  puts "\e[0m" + tweet.text
 end
 
 # display list
 client.list_timeline("list_creater", "list_name").each do |tweet|
-   puts tweet.user.name + "[ID:" + tweet.user.screen_name + "]"
-   puts tweet.text
+  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+  puts "\e[0m" + tweet.text
 end
 
 # tweet
