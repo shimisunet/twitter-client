@@ -12,7 +12,17 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = ""
 end
 
-# display timeline
+# このクライアントの説明
+if ARGV[0] = ""
+  puts "Welcome to Shimisunet Client."
+  puts "このclientを起動時する際、末尾にオプションをつけてください"
+  puts "-t Timelineの取得"
+  puts "-m リプライの取得"
+  puts "-r リストの取得"
+  puts "ツイートしたい内容 ツイートする！"
+end
+
+display timeline
 client.home_timeline.each do |tweet|
   puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
   puts "\e[0m" + tweet.text
@@ -24,11 +34,11 @@ client.mentions_timeline.each do |tweet|
   puts "\e[0m" + tweet.text
 end
 
-# display list
-client.list_timeline("list_creater", "list_name").each do |tweet|
+display list
+client.list_timeline("", "").each do |tweet|
   puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
   puts "\e[0m" + tweet.text
 end
 
-# tweet
- # client.update(ARGV[0])
+tweet
+ client.update(ARGV[0])
