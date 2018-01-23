@@ -30,4 +30,5 @@ twitter.rb をターミナルで実行する。
 
 ```zsh
 chmod +x twitter.rb
+ruby twitter.rb
 ```
