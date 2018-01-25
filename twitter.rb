@@ -22,7 +22,7 @@ if ARGV[0] = ""
   puts "ツイートしたい内容 ツイートする！"
 end
 
-display timeline
+# display timeline
 client.home_timeline.each do |tweet|
   puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
   puts "\e[0m" + tweet.text
@@ -34,7 +34,7 @@ client.mentions_timeline.each do |tweet|
   puts "\e[0m" + tweet.text
 end
 
-display list
+# display list
 client.list_timeline("", "").each do |tweet|
   puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
   puts "\e[0m" + tweet.text
