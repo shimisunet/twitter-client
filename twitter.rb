@@ -5,40 +5,64 @@
  require 'twitter'
 
 # APIキーやアクセストークンを設定
-client = Twitter::REST::Client.new do |config|
+@client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ""
   config.consumer_secret     = ""
   config.access_token        = ""
   config.access_token_secret = ""
 end
 
-# このクライアントの説明
-if ARGV[0] = ""
+# client tutorial
+def tutorial
   puts "Welcome to Shimisunet Client."
   puts "このclientを起動時する際、末尾にオプションをつけてください"
-  puts "-t Timelineの取得"
+  puts "-t HomeのTimeline取得"
   puts "-m リプライの取得"
-  puts "-r リストの取得"
+  puts "-l リストの取得"
   puts "ツイートしたい内容 ツイートする！"
 end
 
-display timeline
-client.home_timeline.each do |tweet|
-  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
-  puts "\e[0m" + tweet.text
+# display timeline
+def homeTimeline
+  @client.home_timeline.each do |tweet|
+    puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+    puts "\e[0m" + tweet.text
+  end
 end
 
 # display mentions
-client.mentions_timeline.each do |tweet|
-  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
-  puts "\e[0m" + tweet.text
+def mentionTimeline
+  @client.mentions_timeline.each do |tweet|
+    puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+    puts "\e[0m" + tweet.text
+  end
 end
 
-display list
-client.list_timeline("", "").each do |tweet|
-  puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
-  puts "\e[0m" + tweet.text
+# display list
+def listTimeline
+  @client.list_timeline("listcreate_user", "list_name").each do |tweet|
+    puts "\e[33m" + tweet.user.name + "\e[32m" + "[ID:" + tweet.user.screen_name + "]"
+    puts "\e[0m" + tweet.text
+  end
 end
 
-tweet
- client.update(ARGV[0])
+# tweet
+def tweet
+   @client.update(ARGV[0])
+   puts "Tweetしたぞい"
+end
+
+option = ARGV[0].to_s
+
+if option == "" then
+  tutorial
+elsif option == "-t" then
+  homeTimeline
+elsif option == "-m" then
+  mentionTimeline
+elsif option == "-l" then
+  listTimeline
+else
+  tweet
+  homeTimeline
+end
