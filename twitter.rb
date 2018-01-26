@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 # twitterライブラリの呼び出し
- require 'twitter'
+require 'twitter'
 
 # APIキーやアクセストークンを設定
 @client = Twitter::REST::Client.new do |config|
@@ -48,8 +48,8 @@ end
 
 # tweet
 def tweet
-   @client.update(ARGV[0])
-   puts "Tweetしたぞい"
+  @client.update(ARGV[0])
+  puts "Tweetしたぞい"
 end
 
 option = ARGV[0].to_s
